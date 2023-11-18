@@ -2,9 +2,9 @@
 
 <head>
     <!-- Scene.js kütüphanesini web sayfanıza dahil edin -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/scenejs/1.10.3/scene.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/scenejs/1.0.0/scene.min.js"></script>
     <style>
-        /* Dikdörtgen ve daire şeklindeki öğelerin stilini tanımlayın */
+        /* Dikdörtgen şeklindeki öğenin stilini tanımlayın */
         .rectangle {
             position: absolute;
             left: 0px;
@@ -13,38 +13,12 @@
             height: 50px;
             background: red;
         }
-
-        .circle {
-            position: absolute;
-            left: 0px;
-            top: 100px;
-            width: 50px;
-            height: 50px;
-            background: blue;
-            border-radius: 50%;
-        }
-
-        /* Play/pause butonlarının stilini tanımlayın */
-        .button {
-            width: 100px;
-            height: 50px;
-            background: green;
-            color: white;
-            border: none;
-            border-radius: 10px;
-            margin: 10px;
-            cursor: pointer;
-        }
     </style>
 </head>
 
 <body>
-    <!-- Dikdörtgen ve daire şeklindeki öğeleri HTML ile tanımlayın -->
+    <!-- Dikdörtgen şeklindeki öğeyi HTML ile tanımlayın -->
     <div class="rectangle"></div>
-    <div class="circle"></div>
-    <!-- Play/pause butonlarını HTML ile tanımlayın -->
-    <button class="button" id="play-rectangle">Play/Pause Rectangle</button>
-    <button class="button" id="play-circle">Play/Pause Circle</button>
     <script>
         // Bir timeline nesnesi oluşturun
         const timeline = new Scene();
@@ -69,95 +43,7 @@
         };
 
         // Animasyon öğesini timeline'a ekle
-        timeline.setItem("rectangle", rectangle, {
-            // Animasyonun keyframes özelliğini tanımla
-            keyframes: {
-                // Animasyonun başlangıç zamanı
-                0: {
-                    // Animasyonun hızı (ms)
-                    duration: 1000,
-                    // Animasyonun zamanlaması
-                    easing: "ease-in-out",
-                },
-                // Animasyonun bitiş zamanı
-                1: {
-                    // Animasyonun hızı (ms)
-                    duration: 2000,
-                    // Animasyonun zamanlaması
-                    easing: "ease-in-out",
-                },
-            },
-        });
-
-        // Bir animasyon öğesi daha tanımlayın
-        const circle = {
-            ".circle": {
-                0: "left: 0px; top: 100px; width: 50px; height: 50px; background: blue; border-radius: 50%; transform: translate(0px);",
-                1: {
-                    "left": "300px",
-                    "top": "100px",
-                    transform: "translate(50px)",
-                },
-                2: {
-                    "left": "600px",
-                    "top": "100px",
-                    transform: {
-                        translate: "100px",
-                    },
-                },
-            },
-        };
-
-        // Animasyon öğesini timeline'a ekle
-        timeline.setItem("circle", circle, {
-            // Animasyonun keyframes özelliğini tanımla
-            keyframes: {
-                // Animasyonun başlangıç zamanı
-                0: {
-                    // Animasyonun hızı (ms)
-                    duration: 1000,
-                    // Animasyonun zamanlaması
-                    easing: "ease-in-out",
-                },
-                // Animasyonun bitiş zamanı
-                1: {
-                    // Animasyonun hızı (ms)
-                    duration: 2000,
-                    // Animasyonun zamanlaması
-                    easing: "ease-in-out",
-                },
-            },
-        });
-
-        // Play/pause butonlarını seç
-        var playRectangle = document.getElementById("play-rectangle");
-        var playCircle = document.getElementById("play-circle");
-
-        // Dikdörtgen butonuna tıklandığında
-        playRectangle.addEventListener("click", function () {
-            // Eğer dikdörtgen animasyonu durdurulmuşsa
-            if (timeline.isPaused("rectangle")) {
-                // Animasyonu oynat
-                timeline.play("rectangle");
-            } else {
-                // Eğer dikdörtgen animasyonu oynatılıyorsa
-                // Animasyonu durdur
-                timeline.pause("rectangle");
-            }
-        });
-
-        // Daire butonuna tıklandığında
-        playCircle.addEventListener("click", function () {
-            // Eğer daire animasyonu durdurulmuşsa
-            if (timeline.isPaused("circle")) {
-                // Animasyonu oynat
-                timeline.play("circle");
-            } else {
-                // Eğer daire animasyonu oynatılıyorsa
-                // Animasyonu durdur
-                timeline.pause("circle");
-            }
-        });
+        timeline.setItem("rectangle", rectangle);
     </script>
 </body>
 
